@@ -1,5 +1,6 @@
 package com.cg.anurag.ls.service;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,9 +13,9 @@ public class LoanService
 	LoanDAO ldao;
 	public void setLdao(LoanDAO ldao) { this.ldao=ldao; }
 	@Transactional(readOnly=true)
-	public Loan getLoanRequest(Integer loanId)
+	public Optional<Loan> getLoanRequest(Integer loanId)
 	{
-		return ldao.findById(loanId).get();
+		return ldao.findById(loanId);
 	}
 	@Transactional(readOnly=true)
 	public List<Loan> getLoanRequests()
@@ -27,9 +28,9 @@ public class LoanService
 		return ldao.save(loan);
 	}
 	@Transactional(readOnly=true)
-	public Loan getLoanDisbursed(Integer loanId)
+	public Optional<Loan> getLoanDisbursed(Integer loanId)
 	{
-		return ldao.findById(loanId).get();
+		return ldao.findById(loanId);
 	}
 	@Transactional(readOnly=true)
 	public List<Loan> getAllLoanDisbursed()
@@ -39,7 +40,9 @@ public class LoanService
 	public String acceptLoanRequest(Loan newLoan)
 	{
 		Loan loan = ldao.findById(newLoan.getLoanId()).get();
-		
+		if(loan!=null)
+			
+			return "Loan Accepted";
 		return "Loan Rejected";
 	}
  

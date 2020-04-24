@@ -1,16 +1,17 @@
 package com.cg.anurag.ls.dto;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+//import javax.persistence.GeneratedValue;
+//import javax.persistence.GenerationType;
+//import javax.persistence.SequenceGenerator;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
+//@DiscrimantorColumn(name="type")
 @Entity
-public class Loan
+abstract public class Loan
 {
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "loan_seq")
-    @SequenceGenerator(sequenceName = "loan_seq", allocationSize = 1, name = "loan_seq")
+	/*@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "LOANSEQ")
+    @SequenceGenerator(sequenceName = "LOANSEQ", allocationSize = 1, name = "loan_seq")*/
 	int loanId;
 	@Column(name="acc_id")
 	long accId;

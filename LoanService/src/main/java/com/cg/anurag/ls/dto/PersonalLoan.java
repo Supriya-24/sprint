@@ -1,7 +1,9 @@
 package com.cg.anurag.ls.dto;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 @Entity
+@Table(name="loan_request")
 public class PersonalLoan extends Loan
 {
 	@Column(name="annual_income")
